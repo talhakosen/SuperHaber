@@ -1,0 +1,9 @@
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_color_secondry"
+    android:choiceMode="singleChoice"
+    android:divider="@color/text_color_primary"
+    android:dividerHeight="0dp"
+    tools:context="superhaber.specialminds.com.superhaber.activities.NavigationDrawerFragment" />

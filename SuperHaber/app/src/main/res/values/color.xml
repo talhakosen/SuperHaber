@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#000000</color>
+    <color name="primaryColorDark">#FFFFFF</color>
+
+    <color name="drawerItemText">#848484</color>
+    <color name="drawerItemBg">#424242</color>
+    <color name="drawerItemBgSelected">#848484</color>
+
+    <color name="text_color_primary">#FFFFFF</color>
+    <color name="text_color_secondry">#424242</color>
+    <color name="text_color_tertiary">#424242</color>
+
+    <color name="yazar_oku_bg">#0F609A</color>
+    <color name="yazar_oku_bg_selected">#328ED0</color>
+
+</resources>

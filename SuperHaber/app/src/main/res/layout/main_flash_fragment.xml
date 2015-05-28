@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <superhaber.specialminds.com.superhaber.view.CardView2x
+        android:id="@+id/cardview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" ></superhaber.specialminds.com.superhaber.view.CardView2x>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <superhaber.specialminds.com.superhaber.view.CardView
+            android:id="@+id/cardview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></superhaber.specialminds.com.superhaber.view.CardView>
+
+        <superhaber.specialminds.com.superhaber.view.CardView
+            android:id="@+id/cardview3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></superhaber.specialminds.com.superhaber.view.CardView>
+
+
+    </LinearLayout>
+</LinearLayout>
