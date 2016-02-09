@@ -5,15 +5,12 @@ import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by talhakosen on 18/05/15.
  */
 
 
-public class CategoryPageSliderObject implements Parcelable {
+public class MainPageSliderObject implements Parcelable {
     @JsonProperty
     private String kategori_sira;
     @JsonProperty
@@ -64,21 +61,21 @@ public class CategoryPageSliderObject implements Parcelable {
     private String karisik_uzun_icerik;
 
 
-    public static final Parcelable.Creator<CategoryPageSliderObject> CREATOR = new Parcelable.Creator<CategoryPageSliderObject>() {
+    public static final Parcelable.Creator<MainPageSliderObject> CREATOR = new Parcelable.Creator<MainPageSliderObject>() {
         @Override
-        public CategoryPageSliderObject createFromParcel(Parcel in) {
-            final CategoryPageSliderObject entry = new CategoryPageSliderObject();
+        public MainPageSliderObject createFromParcel(Parcel in) {
+            final MainPageSliderObject entry = new MainPageSliderObject();
             entry.readFromParcel(in);
             return entry;
         }
 
         @Override
-        public CategoryPageSliderObject[] newArray(int size) {
-            return new CategoryPageSliderObject[size];
+        public MainPageSliderObject[] newArray(int size) {
+            return new MainPageSliderObject[size];
         }
     };
 
-    public CategoryPageSliderObject() {
+    public MainPageSliderObject() {
     }
 
     public String getKategori_sira() {
@@ -106,7 +103,7 @@ public class CategoryPageSliderObject implements Parcelable {
     }
 
     public String getKarisik_google_saati() {
-        return karisik_google_saati;
+        return karisik_google_saati.replace("&nbsp;","").replace("&lrm;","").replace("dakika","dk");
     }
 
     public void setKarisik_google_saati(String karisik_google_saati) {
@@ -273,16 +270,16 @@ public class CategoryPageSliderObject implements Parcelable {
         this.karisik_uzun_icerik = karisik_uzun_icerik;
     }
 
-    public static Creator<CategoryPageSliderObject> getCREATOR() {
+    public static Creator<MainPageSliderObject> getCREATOR() {
         return CREATOR;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CategoryPageSliderObject)) return false;
+        if (!(o instanceof MainPageSliderObject)) return false;
 
-        CategoryPageSliderObject that = (CategoryPageSliderObject) o;
+        MainPageSliderObject that = (MainPageSliderObject) o;
 
         if (getKategori_sira() != null ? !getKategori_sira().equals(that.getKategori_sira()) : that.getKategori_sira() != null)
             return false;

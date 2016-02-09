@@ -7,13 +7,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 import superhaber.specialminds.com.superhaber.activities.MainSliderFragment;
-import superhaber.specialminds.com.superhaber.models.CategoryPageSliderObject;
+import superhaber.specialminds.com.superhaber.models.MainPageSliderObject;
 
 
 public class CustomPagerAdapter extends FragmentPagerAdapter {
-    List<CategoryPageSliderObject> items;
+    List<MainPageSliderObject> items;
 
-    public CustomPagerAdapter(FragmentManager fm, List<CategoryPageSliderObject> items) {
+    public CustomPagerAdapter(FragmentManager fm, List<MainPageSliderObject> items) {
         super(fm);
         this.items = items;
     }

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
-public class CategoryObject implements Parcelable {
+public class NavigationDrawerObject implements Parcelable {
     @JsonProperty
     String kategori_id;
     @JsonProperty
@@ -38,30 +38,30 @@ public class CategoryObject implements Parcelable {
     }
 
 
-    public static final Parcelable.Creator<CategoryObject> CREATOR = new Parcelable.Creator<CategoryObject>() {
+    public static final Parcelable.Creator<NavigationDrawerObject> CREATOR = new Parcelable.Creator<NavigationDrawerObject>() {
         @Override
-        public CategoryObject createFromParcel(Parcel in) {
-            final CategoryObject entry = new CategoryObject();
+        public NavigationDrawerObject createFromParcel(Parcel in) {
+            final NavigationDrawerObject entry = new NavigationDrawerObject();
             entry.readFromParcel(in);
             return entry;
         }
 
         @Override
-        public CategoryObject[] newArray(int size) {
-            return new CategoryObject[size];
+        public NavigationDrawerObject[] newArray(int size) {
+            return new NavigationDrawerObject[size];
         }
     };
 
-    public CategoryObject() {
+    public NavigationDrawerObject() {
         kategori_tipi = CategoryType.ImageText;
     }
 
-    public CategoryObject(CategoryType categoryType,String kategori_id) {
+    public NavigationDrawerObject(CategoryType categoryType, String kategori_id) {
         kategori_tipi = categoryType;
         this.kategori_id =kategori_id;
     }
 
-    public CategoryObject(CategoryType categoryType,String kategori_adi,String kategori_id) {
+    public NavigationDrawerObject(CategoryType categoryType, String kategori_adi, String kategori_id) {
         this.kategori_tipi = categoryType;
         this.kategori_adi =kategori_adi;
         this.kategori_id =kategori_id;
@@ -151,9 +151,9 @@ public class CategoryObject implements Parcelable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CategoryObject)) return false;
+        if (!(o instanceof NavigationDrawerObject)) return false;
 
-        CategoryObject that = (CategoryObject) o;
+        NavigationDrawerObject that = (NavigationDrawerObject) o;
 
         if (getKategori_id() != null ? !getKategori_id().equals(that.getKategori_id()) : that.getKategori_id() != null)
             return false;
@@ -217,6 +217,8 @@ public class CategoryObject implements Parcelable {
         kategori_logo = in.readString();
         kategori_sira = in.readString();
         kategori_tipi = CategoryType.values()[in.readInt()];
-
     }
+
+
+
 }

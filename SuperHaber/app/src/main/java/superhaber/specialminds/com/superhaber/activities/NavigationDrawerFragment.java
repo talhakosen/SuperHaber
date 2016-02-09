@@ -40,12 +40,12 @@ import superhaber.specialminds.com.superhaber.R;
 import superhaber.specialminds.com.superhaber.adapters.DrawerAdapter;
 import superhaber.specialminds.com.superhaber.core.ApplicationMain;
 import superhaber.specialminds.com.superhaber.core.Constants;
-import superhaber.specialminds.com.superhaber.models.CategoryObject;
+import superhaber.specialminds.com.superhaber.models.NavigationDrawerObject;
 import superhaber.specialminds.com.superhaber.requests.GetCategories;
 
 public class NavigationDrawerFragment extends Fragment {
 
-    private List<CategoryObject> items;
+    private List<NavigationDrawerObject> items;
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private NavigationDrawerCallbacks mCallbacks;
@@ -261,7 +261,7 @@ public class NavigationDrawerFragment extends Fragment {
                 try {
                     JSONArray array = response.getJSONArray("item");
                     TypeFactory typeFactory = ApplicationMain.getInstance().getObjectMapper().getTypeFactory();
-                    CollectionType collectionType = typeFactory.constructCollectionType(List.class, CategoryObject.class);
+                    CollectionType collectionType = typeFactory.constructCollectionType(List.class, NavigationDrawerObject.class);
                     items = ApplicationMain.getInstance().getObjectMapper().readValue(array.toString(), collectionType);
                     Collections.sort(items, new CustomComparator());
 
@@ -287,14 +287,14 @@ public class NavigationDrawerFragment extends Fragment {
         ApplicationMain.getInstance().getRequestQueue().add(getCategories);
     }
 
-    public void addCustomItemsToCategoryList(List<CategoryObject> list){
-        list.add(new CategoryObject(CategoryObject.CategoryType.YO,"101"));
-        list.add(new CategoryObject(CategoryObject.CategoryType.Text,"PRO SATIN AL","102"));
-        list.add(new CategoryObject(CategoryObject.CategoryType.Text,"İLETİŞİM","103"));
+    public void addCustomItemsToCategoryList(List<NavigationDrawerObject> list){
+        list.add(new NavigationDrawerObject(NavigationDrawerObject.CategoryType.YO,"101"));
+        list.add(new NavigationDrawerObject(NavigationDrawerObject.CategoryType.Text,"PRO SATIN AL","102"));
+        list.add(new NavigationDrawerObject(NavigationDrawerObject.CategoryType.Text,"İLETİŞİM","103"));
     }
-    public class CustomComparator implements Comparator<CategoryObject> {
+    public class CustomComparator implements Comparator<NavigationDrawerObject> {
         @Override
-        public int compare(CategoryObject o1, CategoryObject o2) {
+        public int compare(NavigationDrawerObject o1, NavigationDrawerObject o2) {
             return o1.getKategori_sira().compareTo(o2.getKategori_sira());
         }
     }

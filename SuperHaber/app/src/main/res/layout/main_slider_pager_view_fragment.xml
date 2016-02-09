@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryColor"
     android:orientation="vertical">
 
     <ImageView
@@ -9,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_weight="1"
+        android:minHeight="250dp"
         android:scaleType="fitXY"></ImageView>
 
     <ScrollView
@@ -24,19 +26,17 @@
 
             <TextView
                 android:id="@+id/txtTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/text_primary.title.bold"
                 android:text="@string/lorem_ipsum_title" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+                android:paddingTop="5dp">
 
                 <TextView
                     android:id="@+id/txtNewsPaper"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/text_primary"
                     android:layout_alignParentLeft="true"
                     android:text="Hurriyet" />
 
@@ -45,21 +45,22 @@
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/txtTime"
                     android:background="@drawable/ic_drawer"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/txtTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/text_tertiary"
                     android:layout_alignParentRight="true"
                     android:text="49 m" />
 
             </RelativeLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/txtShortDesc"
+                style="@style/text_primary"
                 android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="3"
                 android:text="@string/lorem_ipsum_desc" />
 
 

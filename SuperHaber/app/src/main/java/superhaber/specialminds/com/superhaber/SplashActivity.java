@@ -2,7 +2,6 @@ package superhaber.specialminds.com.superhaber;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,12 +22,12 @@ import java.util.List;
 import hugo.weaving.DebugLog;
 import superhaber.specialminds.com.superhaber.core.ApplicationMain;
 import superhaber.specialminds.com.superhaber.core.Constants;
-import superhaber.specialminds.com.superhaber.models.CategoryPageSliderObject;
+import superhaber.specialminds.com.superhaber.models.MainPageSliderObject;
 import superhaber.specialminds.com.superhaber.requests.GetMainSliderRequest;
 
 
 public class SplashActivity extends ActionBarActivity {
-    public List<CategoryPageSliderObject> categoryList;
+    public List<MainPageSliderObject> categoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class SplashActivity extends ActionBarActivity {
                 try {
                     JSONArray array = response.getJSONArray("item");
                     TypeFactory typeFactory = objectMapper.getTypeFactory();
-                    CollectionType collectionType = typeFactory.constructCollectionType(List.class, CategoryPageSliderObject.class);
+                    CollectionType collectionType = typeFactory.constructCollectionType(List.class, MainPageSliderObject.class);
                     categoryList = objectMapper.readValue(array.toString(), collectionType);
                 } catch (JSONException e) {
                     e.printStackTrace();

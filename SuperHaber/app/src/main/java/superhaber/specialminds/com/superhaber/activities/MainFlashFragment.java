@@ -7,12 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import superhaber.specialminds.com.superhaber.R;
-import superhaber.specialminds.com.superhaber.models.CategoryPageSliderObject;
 import superhaber.specialminds.com.superhaber.models.FlashObject;
 import superhaber.specialminds.com.superhaber.view.CardView;
 import superhaber.specialminds.com.superhaber.view.CardView2x;

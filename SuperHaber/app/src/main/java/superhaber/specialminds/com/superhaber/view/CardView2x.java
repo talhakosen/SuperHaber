@@ -13,7 +13,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import superhaber.specialminds.com.superhaber.R;
 import superhaber.specialminds.com.superhaber.core.Constants;
-import superhaber.specialminds.com.superhaber.models.CategoryPageSliderObject;
 import superhaber.specialminds.com.superhaber.models.FlashObject;
 
 /**
@@ -34,6 +33,9 @@ public class CardView2x extends FrameLayout {
     TextView txtNewsPaper;
     @InjectView(R.id.txtTime)
     TextView txtTime;
+    @InjectView(R.id.frameLayoutNewsType)
+    FrameLayout frameLayoutNewsType;
+
 
 
     public CardView2x(Context context) {
@@ -56,6 +58,7 @@ public class CardView2x extends FrameLayout {
 
     public void setObject(FlashObject flashObject) {
         Picasso.with(getContext()).load(Constants.URL_IMAGE + flashObject.getManset_resim()).into(imgNews);
+        frameLayoutNewsType.setBackgroundColor(flashObject.getKategoriArkaPlan());
         txtDesc.setText(flashObject.getManset_kisa_icerik());
         txtNewsPaper.setText(flashObject.getManset_kaynak());
         txtTitle.setText(flashObject.getManset_baslik());

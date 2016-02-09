@@ -1,7 +1,6 @@
 package superhaber.specialminds.com.superhaber.activities;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -10,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.android.volley.Request;
@@ -26,26 +26,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import hugo.weaving.DebugLog;
 import superhaber.specialminds.com.superhaber.R;
 import superhaber.specialminds.com.superhaber.adapters.CustomPagerAdapter;
 import superhaber.specialminds.com.superhaber.core.ApplicationMain;
 import superhaber.specialminds.com.superhaber.core.Constants;
-import superhaber.specialminds.com.superhaber.models.CategoryPageSliderObject;
+import superhaber.specialminds.com.superhaber.models.AnnounceObject;
+import superhaber.specialminds.com.superhaber.models.MainPageSliderObject;
 import superhaber.specialminds.com.superhaber.models.FlashObject;
 import superhaber.specialminds.com.superhaber.requests.GetMainFlashRequest;
 import superhaber.specialminds.com.superhaber.requests.GetMainSliderRequest;
+import superhaber.specialminds.com.superhaber.utils.AndroidUtils;
 import superhaber.specialminds.com.superhaber.utils.viewpagerindicator.CirclePageIndicator;
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private LinearLayout flashContainer;
+    private LinearLayout viewPagerContainer;
     private CharSequence mTitle;
     private Toolbar toolbar;
     private ViewPager pager;
     private CirclePageIndicator indicator;
-    public List<CategoryPageSliderObject> categoryList;
+    public List<MainPageSliderObject> categoryList;
     public ArrayList<FlashObject> flashObjectList;
     CustomPagerAdapter mAdapter;
 
@@ -53,12 +56,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         pager = (ViewPager) findViewById(R.id.pager);
         indicator = (CirclePageIndicator) findViewById(R.id.indicator);
-        flashContainer = (LinearLayout) findViewById(R.id.flashContainer);
+        viewPagerContainer = (LinearLayout) findViewById(R.id.viewPagerContainer);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -72,6 +73,22 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         getMainFlashItems();
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawerLayout));
+
+        resizeViewPagerContainer();
+
+        EventBus.getDefault().post(new AnnounceObject(R.drawable.ic_drawer, "SON 24 SAAT", "MANŞETTEKİ HABERLER", "AnnounceFragment1"));
+        EventBus.getDefault().post(new AnnounceObject(R.drawable.ic_drawer,"DAKİKA DAKİKA","GÜNCEL HABERLER","AnnounceFragment2"));
+    }
+
+    private void resizeViewPagerContainer() {
+        int height =  AndroidUtils.getScreenHeight(this);
+        Log.v("Dimensions", height + " " + (height / 4) * 3);
+
+        height = AndroidUtils.dpToPixels(this, height);
+        Log.v("Dimensions", height + " " + (height / 4) * 3);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (height/5)*3);
+        viewPagerContainer.setLayoutParams(params);
     }
 
     @Override
@@ -103,9 +120,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
             return true;
@@ -115,12 +129,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -139,7 +149,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 try {
                     JSONArray array = response.getJSONArray("item");
                     TypeFactory typeFactory = ApplicationMain.getInstance().getObjectMapper().getTypeFactory();
-                    CollectionType collectionType = typeFactory.constructCollectionType(List.class, CategoryPageSliderObject.class);
+                    CollectionType collectionType = typeFactory.constructCollectionType(List.class, MainPageSliderObject.class);
                     categoryList = ApplicationMain.getInstance().getObjectMapper().readValue(array.toString(), collectionType);
 
                     mAdapter = new CustomPagerAdapter(getSupportFragmentManager(),categoryList);
@@ -198,7 +208,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         ApplicationMain.getInstance().getRequestQueue().add(getMainSliderRequest);
 
     }
-
 
     public void findFragment(ArrayList<FlashObject> flashObjectList){
         getSupportFragmentManager().beginTransaction().add(R.id.flashContainer,MainFlashFragment.newInstance(flashObjectList),"").commit();

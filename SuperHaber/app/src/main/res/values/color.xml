@@ -9,9 +9,16 @@
 
     <color name="text_color_primary">#FFFFFF</color>
     <color name="text_color_secondry">#424242</color>
-    <color name="text_color_tertiary">#424242</color>
+    <color name="text_color_tertiary">#FF0000</color>
 
     <color name="yazar_oku_bg">#0F609A</color>
     <color name="yazar_oku_bg_selected">#328ED0</color>
+    <color name="bgYellow">#FFFF00</color>
+    <color name="bgGreen">#008000</color>
+    <color name="bgBlue">#0000ff</color>
+    <color name="bgRed">#3F0000</color>
+    <color name="bgDarkBlue">#1100ff</color>
+    <color name="bgTurquoise">#40E0D0</color>
+    <color name="bgPurple">#800080</color>
 
 </resources>

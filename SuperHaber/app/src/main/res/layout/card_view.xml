@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
@@ -16,16 +17,39 @@
         <ImageView
             android:id="@+id/imgNews"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitXY"></ImageView>
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"></ImageView>
 
         <TextView
+            style="@style/text_secondy.title.bold"
             android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum_title" />
+            android:layout_marginTop="10dp"
+            android:text="@string/lorem_ipsum_title"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:minLines="3" />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/text_secondy"
+                android:id="@+id/txtTime"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="49 m" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txtTime"
+                android:background="@drawable/ic_drawer"
+                android:textAlignment="center"
+                android:layout_marginLeft="5dp"/>
+
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,46 +61,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:background="@color/wallet_highlighted_text_holo_light"
+                android:background="@color/bgBlue"
                 android:text="Spor">
 
                 <TextView
+                    style="@style/text_primary.bold"
                     android:id="@+id/txtNewsType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="Hurriyet" />
 
             </FrameLayout>
 
             <TextView
+                style="@style/text_secondy"
                 android:id="@+id/txtNewsPaper"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/frameLayoutNewsType"
+                android:layout_marginLeft="5dp"
                 android:text="Hurriyet" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/txtTime"
-                android:background="@drawable/ic_drawer"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/txtTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="49 m" />
-
 
         </RelativeLayout>
 
-
     </LinearLayout>
 </android.support.v7.widget.CardView>
+

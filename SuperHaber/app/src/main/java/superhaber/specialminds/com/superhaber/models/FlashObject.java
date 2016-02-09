@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import superhaber.specialminds.com.superhaber.R;
+
 /**
  * Created by talhakosen on 23/05/15.
  */
@@ -189,4 +191,33 @@ public class FlashObject implements Parcelable {
         kategori_arkaplan = in.readString();
         kategori_link = in.readString();
     }
+
+    public int getKategoriArkaPlan(){
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgBlue;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgDarkBlue;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgGreen;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgPurple;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgRed;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgRed;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgTurquoise;
+
+        if(kategori_arkaplan.equals("bgYellow"))
+            return R.color.bgYellow;
+
+        return R.color.bgRed;
+    }
 }
+

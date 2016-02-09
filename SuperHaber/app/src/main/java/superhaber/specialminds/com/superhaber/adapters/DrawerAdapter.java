@@ -16,14 +16,14 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import superhaber.specialminds.com.superhaber.R;
-import superhaber.specialminds.com.superhaber.models.CategoryObject;
+import superhaber.specialminds.com.superhaber.models.NavigationDrawerObject;
 
-public class DrawerAdapter extends ArrayAdapter<CategoryObject> {
+public class DrawerAdapter extends ArrayAdapter<NavigationDrawerObject> {
     private static LayoutInflater inflater = null;
     private Activity activity;
-    private List<CategoryObject> lItems;
+    private List<NavigationDrawerObject> lItems;
 
-    public DrawerAdapter(Activity activity, int textViewResourceId, List<CategoryObject> _lItems) {
+    public DrawerAdapter(Activity activity, int textViewResourceId, List<NavigationDrawerObject> _lItems) {
         super(activity, textViewResourceId, _lItems);
         this.activity = activity;
         this.lItems = _lItems;
@@ -34,7 +34,7 @@ public class DrawerAdapter extends ArrayAdapter<CategoryObject> {
         return lItems.size();
     }
 
-    public CategoryObject getItem(CategoryObject position) {
+    public NavigationDrawerObject getItem(NavigationDrawerObject position) {
         return position;
     }
 
@@ -46,17 +46,17 @@ public class DrawerAdapter extends ArrayAdapter<CategoryObject> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         View view = inflater.inflate(R.layout.fragment_drawer_item, parent, false);;
-        if (lItems.get(position).getKategori_tipi() == CategoryObject.CategoryType.ImageText) {
+        if (lItems.get(position).getKategori_tipi() == NavigationDrawerObject.CategoryType.ImageText) {
             holder = new ViewHolder(view);
             holder.image.setTag(position);
             Picasso.with(inflater.getContext()).load("http://lorempixel.com/200/200/sports/" + (position + 1)).into(holder.image);
             holder.text.setText(lItems.get(position).getKategori_adi());
-        } else if (lItems.get(position).getKategori_tipi() == CategoryObject.CategoryType.Text) {
+        } else if (lItems.get(position).getKategori_tipi() == NavigationDrawerObject.CategoryType.Text) {
             view = inflater.inflate(R.layout.fragment_drawer_item, parent, false);
             holder = new ViewHolder(view);
             holder.image.setVisibility(View.GONE);
             holder.text.setText(lItems.get(position).getKategori_adi());
-        } else if (lItems.get(position).getKategori_tipi() == CategoryObject.CategoryType.YO) {
+        } else if (lItems.get(position).getKategori_tipi() == NavigationDrawerObject.CategoryType.YO) {
             view = inflater.inflate(R.layout.fragment_drawer_yazar_oku_item, parent, false);
         }
 

@@ -14,7 +14,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
@@ -31,10 +30,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <fragment
+                    android:id="@+id/AnnounceFragment1"
+                    android:name="superhaber.specialminds.com.superhaber.activities.AnnounceFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:tag="AnnounceFragment1"/>
+
+                <LinearLayout
+                    android:id="@+id/viewPagerContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primaryColor"
                     android:orientation="vertical">
 
                     <android.support.v4.view.ViewPager
@@ -48,17 +55,22 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dip" />
-
-
                 </LinearLayout>
+
+
+                <fragment
+                    android:id="@+id/AnnounceFragment2"
+                    android:name="superhaber.specialminds.com.superhaber.activities.AnnounceFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="AnnounceFragment2"/>
+
 
                 <LinearLayout
                     android:id="@+id/flashContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:orientation="vertical">
-
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">s
 
                 </LinearLayout>
 
